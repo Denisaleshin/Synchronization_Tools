@@ -26,16 +26,12 @@ class LockedNumbers {
     
     func removeLast() {
         self.semaphore.wait()
-        defer {
-            self.semaphore.signal()
+        if !self.elements.isEmpty  {
+            self.elements.removeLast()
         }
-        guard !self.elements.isEmpty else {
-            return
-        }
-        let num = self.elements.removeLast()
-        
+        self.semaphore.signal()
     }
 }
 
-threadSafeWork()
+
 //: [Next](@next)
