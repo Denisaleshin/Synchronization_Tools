@@ -6,5 +6,8 @@
         <page name='ConditionMutex'/>
         <page name='ReadWriteMutex'/>
         <page name='Semaphore'/>
+        <page name='DispatchWorkItem(cancel)'/>
+        <page name='Operation(async)'/>
+        <page name='Operation(Cancel)'/>
     </pages>
 </playground>
