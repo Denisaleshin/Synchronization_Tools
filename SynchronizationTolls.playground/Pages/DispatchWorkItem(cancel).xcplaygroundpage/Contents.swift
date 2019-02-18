@@ -30,6 +30,29 @@ func cancelBefore() {
     item.cancel()
     
 }
-cancelBefore()
+// cancelBefore()
+
+// Cancelation Item after has been started
+
+var workItem: DispatchWorkItem?
+workItem = DispatchWorkItem {
+    for i in 1..<6 {
+        guard let item = workItem, !item.isCancelled else {
+            print("cancelled")
+            break
+        }
+        sleep(1)
+        print(String(i))
+    }
+}
+
+workItem?.notify(queue: .main) {
+    print("done")
+}
+
+DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(2)) {
+    workItem?.cancel()
+}
+DispatchQueue.main.async(execute: workItem!)
 
 
